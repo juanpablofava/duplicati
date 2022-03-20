@@ -1,0 +1,13 @@
+services:
+  app:
+    image: duplicati/duplicati:latest
+    command:
+      - 'duplicati-server'
+      - '--webservice-interface=any'
+      - '--webservice-allowed-hostnames=*'
+    volumes:
+      - ./duplicati-data:/data
+      - /:/source
+    restart: always
+    ports:
+      - '8200:8200'
